@@ -1,0 +1,14 @@
+# Folders
+node_modules/
+
+# IDEA
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+*.classpath
+*.project
+
+# Logs
+*.log

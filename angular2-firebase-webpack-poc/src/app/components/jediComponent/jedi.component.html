@@ -1,0 +1,19 @@
+<div class="save-container">
+	<button (click)="onGetAll()">Show All Jedis</button>
+	<h3>Save Jedi</h3>
+	<label class="save-form-componenet" for="status">Status</label>
+	<input type="text" id="status" #status>
+	<label class="save-form-componenet" for="name">Name</label>
+	<input type="text" id="name" #name>
+	<button class="save-form-componenet" (click)="onSave(null, status.value, name.value)">Save</button>
+<hr>
+</div>
+<div class="jedis-container">
+	<ul *ngFor="let jedi of jedis">
+		<div>
+			<li class="jedi-container">{{jedi.status}} - {{jedi.name}}</li>
+			<button (click)="onUpdate(jedi.id, jedi.status, jedi.name)">Random Update</button>
+			<button (click)="onRemove(jedi.id)">Remove</button>
+		</div>
+	</ul>
+</div>

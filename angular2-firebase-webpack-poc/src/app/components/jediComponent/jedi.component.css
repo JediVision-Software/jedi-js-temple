@@ -1,0 +1,19 @@
+.save-container {
+	text-align: center;
+}
+
+.save-form-componenet {
+	margin-left: 15px;
+}
+
+.jedis-container {
+	text-align: center;
+	width: 400px;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.jedi-container {
+	width: 50%;
+	float: left;
+}
