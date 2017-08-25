@@ -9,3 +9,4 @@ Welcome to JDV JavaScript Temple — JavaScript Proofs of Concepts repository. M
 
 * Angular2 Firebase Webpack PoC — Angular2, Firebase database, Webpack2
 * to be continued...
+
