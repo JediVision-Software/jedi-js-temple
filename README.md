@@ -8,5 +8,6 @@ Welcome to JDV JavaScript Temple — JavaScript Proofs of Concepts repository. M
 # Proofs of Concepts:
 
 * Angular2 Firebase Webpack PoC — Angular2, Firebase database, Webpack2
+* Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ticker, orderbooks, trades
 * to be continued...
 
