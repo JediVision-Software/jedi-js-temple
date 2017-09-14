@@ -24,6 +24,11 @@ Plugins:
 $ npm install vue-resource
 ```
 
+Devtools:
+
+Download the Vue Devtools extension for a better development experience: https://github.com/vuejs/vue-devtools
+
+
 Read more: `https://github.com/vuejs-templates/webpack`
 
 ## Installation IDEA
@@ -32,3 +37,7 @@ Read more: `https://github.com/vuejs-templates/webpack`
 * Preferences -> Install -> Search plugin: language-vue-component
 * Install both
 * Enjoy :)
+
+## Run
+`npm run dev` - Development Mode
+`npm run build` - Production Mode
