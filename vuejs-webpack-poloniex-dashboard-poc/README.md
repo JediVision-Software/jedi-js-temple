@@ -2,12 +2,12 @@
 
 Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ticker, orderbooks, trades
 
-## Technology stack:
+### Technology stack:
 * Vue.js
 * Webpack
 * Poloniex API
 
-## Installation
+### Installation
 
 Default:
 
@@ -18,26 +18,28 @@ $ cd vuejs-webpack-poloniex-dashboard-poc
 $ npm install
 $ npm run dev
 ```
-Plugins:
+Installed Plugins:
 
 ``` bash
 $ npm install vue-resource
+$ npm install --save-dev babel-preset-es2015
+$ npm install vuetable-2
 ```
 
 Devtools:
 
-`Download the Vue Devtools extension for a better development experience: https://github.com/vuejs/vue-devtools`
+`Download the Vue Devtools: https://github.com/vuejs/vue-devtools`
 
 Read more: `https://github.com/vuejs-templates/webpack`
 
-## Installation IDEA
+### Installation IDEA
 * Atom IDE
 * Preferences -> Install -> Search plugin: language-vue
 * Preferences -> Install -> Search plugin: language-vue-component
 * Install both
 * Enjoy :)
 
-## Run
+### Run
 
 `npm run dev` - Development Mode
 

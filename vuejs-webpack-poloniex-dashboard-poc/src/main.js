@@ -8,6 +8,12 @@ import router from './router'
 Vue.config.productionTip = false
 Vue.use(VueResource)
 
+import Vuetable from 'vuetable-2/src/components/Vuetable.vue'
+import VuetablePagination from 'vuetable-2/src/components/VuetablePagination.vue'
+
+Vue.component('vuetable', Vuetable)
+Vue.component('vuetable-pagination', VuetablePagination)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

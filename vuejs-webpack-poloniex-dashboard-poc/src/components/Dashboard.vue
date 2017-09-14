@@ -1,9 +1,18 @@
 <template>
   <div class="dashboard">
-    <h1>{{ title }}</h1>
-    <h2>Currency Pair: <b>{{ configuration.currencyPair.ui }}</b></h2>
-    <h3>Ticker: <b>{{ ticker.last }}</b></h3>
-    <h3>Low24: <b>{{ ticker.low24 }}</b>, High24: <b>{{ ticker.high24 }}</b></h3>
+    <div id="configuration">
+      <h1>{{ title }}</h1>
+      <h2>Currency Pair: <b>{{ configuration.currencyPair.ui }}</b></h2>
+      <h3>Ticker: <b>{{ ticker.last }}</b></h3>
+      <h3>Low24: <b>{{ ticker.low24 }}</b>, High24: <b>{{ ticker.high24 }}</b></h3>
+    </div>
+    <div id="tradesTable">
+      <vuetable
+        :api-mode="false"
+        :fields="configuration.trades.columns"
+        :data="configuration.trades.data"
+      ></vuetable>
+    </div>
   </div>
 </template>
 
@@ -17,8 +26,18 @@ export default {
           apiKey: 'USDT_BTC',
           ui: 'USD / BTC'
         },
+        trades: {
+          endpoint: 'https://poloniex.com/public?command=returnTradeHistory&currencyPair=',
+          columns: [
+            'date',
+            'type',
+            'amount',
+            'rate',
+            'total'
+          ],
+          data: []
+        },
         tickerEndpoint: 'https://poloniex.com/public?command=returnTicker',
-        tradesEndpointBase: 'https://poloniex.com/public?command=returnTradeHistory&currencyPair=',
         pollInterval: 10000
       },
       ticker: {
@@ -47,12 +66,18 @@ export default {
       })
     },
     getTrades: function () {
-      var tradesEndpoint = this.configuration.tradesEndpointBase + this.configuration.currencyPair.apiKey
+      var tradesEndpoint = this.configuration.trades.endpoint + this.configuration.currencyPair.apiKey
       this.$http.get(tradesEndpoint).then(function (response) {
-        console.log(response)
-      }, function (error) {
-        console.log('1')
-        console.log(error)
+        var self = this
+        response.body.forEach(function (trade) {
+          self.configuration.trades.data.push({
+            date: trade.date,
+            amount: trade.amount,
+            rate: trade.rate,
+            total: trade.total,
+            type: trade.type
+          })
+        })
       })
     }
   },
