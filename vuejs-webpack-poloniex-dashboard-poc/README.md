@@ -9,7 +9,14 @@ Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ti
 
 ### Installation
 
-Default:
+Installation:
+``` bash
+$ npm install -g vue-cli
+$ npm install
+$ npm run dev
+```
+
+Skeleton:
 
 ``` bash
 $ npm install -g vue-cli
@@ -18,11 +25,12 @@ $ cd vuejs-webpack-poloniex-dashboard-poc
 $ npm install
 $ npm run dev
 ```
+
 Installed Plugins:
 
 ``` bash
-$ npm install vue-resource
 $ npm install --save-dev babel-preset-es2015
+$ npm install vue-resource
 $ npm install vuetable-2
 ```
 
@@ -31,6 +39,15 @@ Devtools:
 `Download the Vue Devtools: https://github.com/vuejs/vue-devtools`
 
 Read more: `https://github.com/vuejs-templates/webpack`
+
+### Installation on Server
+``` bash
+$ sudo apt-get update
+$ sudo apt-get install npm
+$ sudo apt-get install nodejs
+$ sudo apt-get install nodejs-legacy
+$ npm install -g vue-cli
+```
 
 ### Installation IDEA
 * Atom IDE
