@@ -26,8 +26,7 @@ $ npm install vue-resource
 
 Devtools:
 
-Download the Vue Devtools extension for a better development experience: https://github.com/vuejs/vue-devtools
-
+`Download the Vue Devtools extension for a better development experience: https://github.com/vuejs/vue-devtools`
 
 Read more: `https://github.com/vuejs-templates/webpack`
 
@@ -39,5 +38,7 @@ Read more: `https://github.com/vuejs-templates/webpack`
 * Enjoy :)
 
 ## Run
+
 `npm run dev` - Development Mode
+
 `npm run build` - Production Mode
