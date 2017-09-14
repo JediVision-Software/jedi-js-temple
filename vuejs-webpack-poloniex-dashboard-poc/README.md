@@ -18,3 +18,10 @@ $ npm run dev
 ```
 
 Read more: `https://github.com/vuejs-templates/webpack`
+
+## Installation IDEA
+* Atom IDE
+* Preferences -> Install -> Search plugin: language-vue
+* Preferences -> Install -> Search plugin: language-vue-component
+* Install both
+* Enjoy :)
