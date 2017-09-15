@@ -56,7 +56,8 @@ export default {
           columns: [
             'price',
             'amount',
-            'total'
+            'total',
+            'cumulative'
           ]
         },
         pollInterval: 10000
@@ -116,20 +117,28 @@ export default {
       self.$http.get(orderbookEndpoint).then(function (response) {
         // buy orders
         self.orderbooks.buy.length = 0
+        var buyCumulative = 0
         response.body.bids.forEach(function (order) {
+          var total = order[0] * order[1]
+          buyCumulative = buyCumulative + total
           self.orderbooks.buy.push({
             price: order[0],
             amount: order[1],
-            total: order[0] * order[1]
+            total: total,
+            cumulative: buyCumulative
           })
         })
         // sell orders
         self.orderbooks.sell.length = 0
+        var sellCumulative = 0
         response.body.asks.forEach(function (order) {
+          var total = order[0] * order[1]
+          sellCumulative = sellCumulative + total
           self.orderbooks.sell.push({
             price: order[0],
             amount: order[1],
-            total: order[0] * order[1]
+            total: total,
+            cumulative: sellCumulative
           })
         })
       })
