@@ -17,7 +17,14 @@
       <vuetable
         :api-mode="false"
         :fields="configuration.orderbook.columns"
-        :data="trades.data"
+        :data="orderbooks.buy"
+      ></vuetable>
+    </div>
+    <div id="sellOrdersTable">
+      <vuetable
+        :api-mode="false"
+        :fields="configuration.orderbook.columns"
+        :data="orderbooks.sell"
       ></vuetable>
     </div>
   </div>
@@ -91,6 +98,7 @@ export default {
       var self = this
       var tradesEndpoint = self.configuration.trades.endpoint + self.configuration.currencyPair.apiKey
       self.$http.get(tradesEndpoint).then(function (response) {
+        this.trades.data.length = 0
         response.body.forEach(function (trade) {
           self.trades.data.push({
             date: trade.date,
@@ -106,8 +114,24 @@ export default {
       var self = this
       var orderbookEndpoint = self.configuration.orderbook.endpoint + self.configuration.currencyPair.apiKey
       self.$http.get(orderbookEndpoint).then(function (response) {
-        self.orderbooks.buy = response.body.bids
-        self.orderbooks.sell = response.body.asks
+        // buy orders
+        self.orderbooks.buy.length = 0
+        response.body.bids.forEach(function (order) {
+          self.orderbooks.buy.push({
+            price: order[0],
+            amount: order[1],
+            total: order[0] * order[1]
+          })
+        })
+        // sell orders
+        self.orderbooks.sell.length = 0
+        response.body.asks.forEach(function (order) {
+          self.orderbooks.sell.push({
+            price: order[0],
+            amount: order[1],
+            total: order[0] * order[1]
+          })
+        })
       })
     }
   },
@@ -116,11 +140,11 @@ export default {
     this.getTicker()
     this.getTrades()
 
-    /*
-    setInterval(function () {
-      this.getTrades()
-    }.bind(this), this.configuration.pollInterval)
-    */
+    // setInterval(function () {
+    //   this.getOrderBooks()
+    //   this.getTicker()
+    //   this.getTrades()
+    // }.bind(this), this.configuration.pollInterval)
   }
 }
 </script>
@@ -137,6 +161,11 @@ h1, h2, h3 {
 }
 
 #buyOrdersTable {
+  float: left;
+  margin-right: 250px;
+}
+
+#sellOrdersTable {
   float: left;
 }
 </style>
