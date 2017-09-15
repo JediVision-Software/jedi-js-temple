@@ -13,6 +13,13 @@
         :data="trades.data"
       ></vuetable>
     </div>
+    <div id="buyOrdersTable">
+      <vuetable
+        :api-mode="false"
+        :fields="configuration.orderbook.columns"
+        :data="trades.data"
+      ></vuetable>
+    </div>
   </div>
 </template>
 
@@ -37,7 +44,14 @@ export default {
           ]
         },
         tickerEndpoint: 'https://poloniex.com/public?command=returnTicker',
-        orderbooksEndpoint: 'https://poloniex.com/public?command=returnOrderBook&currencyPair=',
+        orderbook: {
+          endpoint: 'https://poloniex.com/public?command=returnOrderBook&currencyPair=',
+          columns: [
+            'price',
+            'amount',
+            'total'
+          ]
+        },
         pollInterval: 10000
       },
       ticker: {
@@ -90,8 +104,8 @@ export default {
     },
     getOrderBooks: function () {
       var self = this
-      var orderbooksEndpoint = self.configuration.orderbooksEndpoint + self.configuration.currencyPair.apiKey
-      self.$http.get(orderbooksEndpoint).then(function (response) {
+      var orderbookEndpoint = self.configuration.orderbook.endpoint + self.configuration.currencyPair.apiKey
+      self.$http.get(orderbookEndpoint).then(function (response) {
         self.orderbooks.buy = response.body.bids
         self.orderbooks.sell = response.body.asks
       })
@@ -115,5 +129,14 @@ export default {
 <style scoped>
 h1, h2, h3 {
   font-weight: normal;
+}
+
+#tradesTable {
+  float: left;
+  margin-right: 250px;
+}
+
+#buyOrdersTable {
+  float: left;
 }
 </style>
