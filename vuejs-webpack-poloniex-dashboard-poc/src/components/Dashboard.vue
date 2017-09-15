@@ -10,7 +10,7 @@
       <vuetable
         :api-mode="false"
         :fields="configuration.trades.columns"
-        :data="configuration.trades.data"
+        :data="trades.data"
       ></vuetable>
     </div>
   </div>
@@ -34,8 +34,7 @@ export default {
             'amount',
             'rate',
             'total'
-          ],
-          data: []
+          ]
         },
         tickerEndpoint: 'https://poloniex.com/public?command=returnTicker',
         pollInterval: 10000
@@ -44,6 +43,9 @@ export default {
         last: 'loading...',
         low24: 'loading...',
         high24: 'loading...'
+      },
+      trades: {
+        data: []
       },
       title: 'Dashboard: ticker, orderbooks, trades'
     }
@@ -70,7 +72,7 @@ export default {
       this.$http.get(tradesEndpoint).then(function (response) {
         var self = this
         response.body.forEach(function (trade) {
-          self.configuration.trades.data.push({
+          self.trades.data.push({
             date: trade.date,
             amount: trade.amount,
             rate: trade.rate,
@@ -82,6 +84,7 @@ export default {
     }
   },
   created: function () {
+    console.log('HERE')
     // this.getTicker()
     this.getTrades()
 
