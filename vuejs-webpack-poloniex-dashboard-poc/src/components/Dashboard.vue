@@ -166,12 +166,12 @@ h1, h2, h3 {
 
 #tradesTable {
   float: left;
-  margin-right: 250px;
+  margin-right: 140px;
 }
 
 #buyOrdersTable {
   float: left;
-  margin-right: 250px;
+  margin-right: 110px;
 }
 
 #sellOrdersTable {
