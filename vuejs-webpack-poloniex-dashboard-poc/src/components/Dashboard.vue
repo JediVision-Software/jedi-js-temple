@@ -37,6 +37,7 @@ export default {
           ]
         },
         tickerEndpoint: 'https://poloniex.com/public?command=returnTicker',
+        orderbooksEndpoint: 'https://poloniex.com/public?command=returnOrderBook&currencyPair=',
         pollInterval: 10000
       },
       ticker: {
@@ -47,20 +48,25 @@ export default {
       trades: {
         data: []
       },
+      orderbooks: {
+        buy: [],
+        sell: []
+      },
       title: 'Dashboard: ticker, orderbooks, trades'
     }
   },
   methods: {
     getTicker: function () {
-      this.$http.get(this.configuration.tickerEndpoint).then(function (response) {
-        var tickerResponse = response.body[this.configuration.currencyPair.apiKey]
-        this.ticker = {
+      var self = this
+      self.$http.get(self.configuration.tickerEndpoint).then(function (response) {
+        var tickerResponse = response.body[self.configuration.currencyPair.apiKey]
+        self.ticker = {
           last: tickerResponse.last,
           low24: tickerResponse.low24hr,
           high24: tickerResponse.high24hr
         }
       }, function () {
-        this.ticker = {
+        self.ticker = {
           last: 'N/A',
           low24: 'N/A',
           high24: 'N/A'
@@ -68,9 +74,9 @@ export default {
       })
     },
     getTrades: function () {
-      var tradesEndpoint = this.configuration.trades.endpoint + this.configuration.currencyPair.apiKey
-      this.$http.get(tradesEndpoint).then(function (response) {
-        var self = this
+      var self = this
+      var tradesEndpoint = self.configuration.trades.endpoint + self.configuration.currencyPair.apiKey
+      self.$http.get(tradesEndpoint).then(function (response) {
         response.body.forEach(function (trade) {
           self.trades.data.push({
             date: trade.date,
@@ -81,11 +87,19 @@ export default {
           })
         })
       })
+    },
+    getOrderBooks: function () {
+      var self = this
+      var orderbooksEndpoint = self.configuration.orderbooksEndpoint + self.configuration.currencyPair.apiKey
+      self.$http.get(orderbooksEndpoint).then(function (response) {
+        self.orderbooks.buy = response.body.bids
+        self.orderbooks.sell = response.body.asks
+      })
     }
   },
   created: function () {
-    console.log('HERE')
-    // this.getTicker()
+    this.getOrderBooks()
+    this.getTicker()
     this.getTrades()
 
     /*
