@@ -128,24 +128,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2, h3 {
-  font-weight: normal;
-}
-
-#tradesTable {
-  float: left;
-  margin-right: 140px;
-}
-
-#buyOrdersTable {
-  float: left;
-  margin-right: 110px;
-}
-
-#sellOrdersTable {
-  float: left;
-}
-</style>
