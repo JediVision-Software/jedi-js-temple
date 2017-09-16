@@ -1,38 +1,7 @@
-<template>
-  <div class="dashboard">
-    <div id="configuration">
-      <h1>{{ title }}</h1>
-      <h2>Currency Pair: <b>{{ configuration.currencyPair.ui }}</b></h2>
-      <h3>Ticker: <b>{{ ticker.last }}</b></h3>
-      <h3>Low24: <b>{{ ticker.low24 }}</b>, High24: <b>{{ ticker.high24 }}</b></h3>
-    </div>
-    <div id="tradesTable">
-      <vuetable
-        :api-mode="false"
-        :fields="configuration.trades.columns"
-        :data="trades.data"
-      ></vuetable>
-    </div>
-    <div id="buyOrdersTable">
-      <vuetable
-        :api-mode="false"
-        :fields="configuration.orderbook.columns"
-        :data="orderbooks.buy"
-      ></vuetable>
-    </div>
-    <div id="sellOrdersTable">
-      <vuetable
-        :api-mode="false"
-        :fields="configuration.orderbook.columns"
-        :data="orderbooks.sell"
-      ></vuetable>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   name: 'dashboard',
+  template: require('../templates/dashboard.html'),
   data () {
     return {
       configuration: {
