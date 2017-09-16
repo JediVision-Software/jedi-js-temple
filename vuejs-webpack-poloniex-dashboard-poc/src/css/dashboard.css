@@ -1,0 +1,17 @@
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+#tradesTable {
+  float: left;
+  margin-right: 140px;
+}
+
+#buyOrdersTable {
+  float: left;
+  margin-right: 110px;
+}
+
+#sellOrdersTable {
+  float: left;
+}

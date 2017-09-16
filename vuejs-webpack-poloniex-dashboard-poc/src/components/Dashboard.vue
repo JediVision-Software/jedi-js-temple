@@ -1,7 +1,9 @@
+<template src="../templates/dashboard.html"></template>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped src="../css/dashboard.css"></style>
 <script>
 export default {
   name: 'dashboard',
-  template: require('../templates/dashboard.html'),
   data () {
     return {
       configuration: {
