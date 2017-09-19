@@ -1,5 +1,4 @@
 <template src="../templates/dashboard.html"></template>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped src="../css/dashboard.css"></style>
 <script>
 export default {
@@ -12,26 +11,13 @@ export default {
           ui: 'USD / BTC'
         },
         trades: {
-          endpoint: 'https://poloniex.com/public?command=returnTradeHistory&currencyPair=',
-          columns: [
-            'date',
-            'type',
-            'amount',
-            'rate',
-            'total'
-          ]
+          endpoint: 'https://poloniex.com/public?command=returnTradeHistory&currencyPair='
         },
         tickerEndpoint: 'https://poloniex.com/public?command=returnTicker',
         orderbook: {
-          endpoint: 'https://poloniex.com/public?command=returnOrderBook&currencyPair=',
-          columns: [
-            'price',
-            'amount',
-            'total',
-            'cumulative'
-          ]
+          endpoint: 'https://poloniex.com/public?command=returnOrderBook&currencyPair='
         },
-        pollInterval: 10000
+        pollInterval: 2000
       },
       ticker: {
         last: 'loading...',
@@ -49,7 +35,6 @@ export default {
     }
   },
   methods: {
-
     getTicker: function () {
       var self = this
       self.$http.get(self.configuration.tickerEndpoint).then(function (response) {
@@ -67,7 +52,6 @@ export default {
         }
       })
     },
-
     getTrades: function () {
       var self = this
       var tradesEndpoint = self.configuration.trades.endpoint + self.configuration.currencyPair.apiKey
@@ -118,10 +102,6 @@ export default {
     }
   },
   created: function () {
-    // this.getOrderBooks()
-    // this.getTicker()
-    // this.getTrades()
-
     setInterval(function () {
       this.getOrderBooks()
       this.getTicker()
