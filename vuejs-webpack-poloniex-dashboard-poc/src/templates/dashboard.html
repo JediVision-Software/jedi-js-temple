@@ -1,29 +1,85 @@
-<div class="dashboard">
-  <div id="configuration">
-    <h1>{{ title }}</h1>
-    <h2>Currency Pair: <b>{{ configuration.currencyPair.ui }}</b></h2>
-    <h3>Ticker: <b>{{ ticker.last }}</b></h3>
-    <h3>Low24: <b>{{ ticker.low24 }}</b>, High24: <b>{{ ticker.high24 }}</b></h3>
-  </div>
-  <div id="tradesTable">
-    <vuetable
-      :api-mode="false"
-      :fields="configuration.trades.columns"
-      :data="trades.data"
-    ></vuetable>
-  </div>
-  <div id="buyOrdersTable">
-    <vuetable
-      :api-mode="false"
-      :fields="configuration.orderbook.columns"
-      :data="orderbooks.buy"
-    ></vuetable>
-  </div>
-  <div id="sellOrdersTable">
-    <vuetable
-      :api-mode="false"
-      :fields="configuration.orderbook.columns"
-      :data="orderbooks.sell"
-    ></vuetable>
+<div  class="container-fluid">
+  <div class="row">
+    <div id="configuration">
+      <h1>{{ title }}</h1>
+      <h2>Currency Pair: <b>{{ configuration.currencyPair.ui }}</b></h2>
+      <h3>Ticker: <b>{{ ticker.last }}</b></h3>
+      <h3>Low24: <b>{{ ticker.low24 }}</b>, High24: <b>{{ ticker.high24 }}</b></h3>
+    </div>
+    <div class="col-md-12">
+      <div class="row" >
+        <div class="col-md-4" id="table-wrapper">
+        <h4 class="textField" align="left">TRADES</h4>
+          <div class="table-scroll">
+            <table class="table table-bordered table-hover">
+              <thead class="fixedHeader">
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Rate</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody  >
+                <tr v-for="trade in trades.data">
+                  <td>{{trade.date}}</td>
+                  <td>{{trade.type}}</td>
+                  <td>{{trade.amount}}</td>
+                  <td>{{trade.rate}}</td>
+                  <td>{{trade.total}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-4" id="table-wrapper">
+          <h4 class="textField" align="left">BUY ORDERS</h4>
+          <div class="table-scroll">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                    <th>Comulative</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="buy in orderbooks.buy">
+                    <td>{{buy.price}}</td>
+                    <td>{{buy.amount}}</td>
+                    <td>{{buy.total}}</td>
+                    <td>{{buy.cumulative}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+        <div class="col-md-4" id="table-wrapper">
+            <h4 class="textField" align="left">SELL ORDERS</h4>
+          <div class="table-scroll">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                    <th>Comulative</th>
+                  </tr>
+                </thead>
+                <tbody class="scrollContent">
+                  <tr v-for="sell in orderbooks.sell">
+                    <td>{{sell.price}}</td>
+                    <td >{{sell.amount}}</td>
+                    <td>{{sell.total}}</td>
+                    <td>{{sell.cumulative}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

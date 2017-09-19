@@ -49,6 +49,7 @@ export default {
     }
   },
   methods: {
+
     getTicker: function () {
       var self = this
       self.$http.get(self.configuration.tickerEndpoint).then(function (response) {
@@ -66,6 +67,7 @@ export default {
         }
       })
     },
+
     getTrades: function () {
       var self = this
       var tradesEndpoint = self.configuration.trades.endpoint + self.configuration.currencyPair.apiKey
@@ -116,15 +118,15 @@ export default {
     }
   },
   created: function () {
-    this.getOrderBooks()
-    this.getTicker()
-    this.getTrades()
+    // this.getOrderBooks()
+    // this.getTicker()
+    // this.getTrades()
 
-    // setInterval(function () {
-    //   this.getOrderBooks()
-    //   this.getTicker()
-    //   this.getTrades()
-    // }.bind(this), this.configuration.pollInterval)
+    setInterval(function () {
+      this.getOrderBooks()
+      this.getTicker()
+      this.getTrades()
+    }.bind(this), this.configuration.pollInterval)
   }
 }
 </script>

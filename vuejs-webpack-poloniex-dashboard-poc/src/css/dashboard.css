@@ -1,17 +1,22 @@
-h1, h2, h3 {
-  font-weight: normal;
+.container-fluid{
+  font-size: 0.87em;
 }
 
-#tradesTable {
-  float: left;
-  margin-right: 140px;
+thead{
+  background-color: #b3d5d6;
 }
 
-#buyOrdersTable {
-  float: left;
-  margin-right: 110px;
+.table-scroll {
+  height:545px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
-#sellOrdersTable {
-  float: left;
+#table-wrapper table {
+  width:100%;
+}
+
+.textField{
+  font-size: 20px;
+  font-weight: lighter;
 }
