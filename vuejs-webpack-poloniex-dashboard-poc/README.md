@@ -2,6 +2,11 @@
 
 Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ticker, orderbooks, trades
 
+### Demo:
+<p align="center">
+	<img src="https://github.com/jedivision-software/jdv-temple-javascript/blob/master/vuejs-webpack-poloniex-dashboard-poc/img/vuejs-webpack-poloniex-dashboard-poc-demo.gif?raw=true" alt=""/>
+</p>
+
 ### Technology stack:
 * Vue.js
 * Webpack
