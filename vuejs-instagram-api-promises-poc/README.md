@@ -1,6 +1,6 @@
 # vuejs-instagram-api-promises-poc
 
-> Vue.js - Instagra APIs (followers, followings) using promises
+> Vue.js - Instagram APIs (followers, followings) using promises
 
 ## Build Setup
 
