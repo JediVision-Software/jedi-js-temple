@@ -6,9 +6,7 @@ export default {
   data () {
     return {
       endpoints: {
-        oauthURL: 'https://api.instagram.com/oauth/authorize?client_id=210a468d3bf14835a73d0d6d01a59cd1&redirect_uri=http://localhost:8080&scope=follower_list&response_type=token',
-        selfURL: 'https://api.instagram.com/v1/users/self/?access_token=',
-        followedByURL: 'https://api.instagram.com/v1/users/self/follows?access_token='
+        oauthURL: 'https://api.instagram.com/oauth/authorize?client_id=210a468d3bf14835a73d0d6d01a59cd1&redirect_uri=http://localhost:8080&scope=public_content+follower_list&response_type=token'
       },
       configuration: {
         timeout: 3000
@@ -31,15 +29,6 @@ export default {
       //   console.log('---500 not OK --')
       //   // error callback
       // })
-      // self.$http.get(self.endpoints.selfURL + self.configuration.token).then(response => {
-      //   console.log('---200 OK--')
-      //   console.log(response)
-      //   console.log(response.body)
-      //   console.log('---')
-      // }, response => {
-      //   console.log('---500 not OK --')
-      //   // error callback
-      // })
       // self.$http.get(self.endpoints.followedByURL + self.configuration.token).then(response => {
       //   console.log('---200 OK: Followed By--')
       //   console.log(response)
@@ -53,8 +42,6 @@ export default {
     }
   },
   created: function () {
-    var href = window.location.href
-    console.log('home) href: ' + href + ' : ' + href.indexOf('#access_token'))
     this.getImplicitTypeToken()
   }
 }

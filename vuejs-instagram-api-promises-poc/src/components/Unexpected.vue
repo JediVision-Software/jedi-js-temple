@@ -1,5 +1,6 @@
 <template src="../templates/unexpected.html"></template>
 <script>
+import Vue from 'vue'
 export default {
   name: 'unexpected',
   created: function () {
@@ -7,7 +8,8 @@ export default {
     var isRedirect = href.indexOf('#/access_token=') !== -1
     if (isRedirect) {
       var accessToken = href.replace('http://localhost:8080/#/access_token=', '')
-
+      Vue.ls.set('accessToken', accessToken)
+      window.location.href = '/#/dashboard'
     } else {
       // 404 page
     }
