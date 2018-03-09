@@ -1,3 +1,29 @@
 <div  class="container-fluid">
-  Dashboard :)
+  Dashboard: {{data.self.username}} - {{data.self.full_name}}
+  <div class="row">
+    <div class="column">
+      <h1>People you like, but they dont like you</h1>
+      <ul>
+        <li v-for="item in data.peopleYouLikeButTheyDontLikeYou">
+          {{item.username}} - {{item.full_name}}
+        </li>
+      </ul>
+    </div>
+    <div class="column">
+      <h1>People with mutual love</h1>
+      <ul>
+        <li v-for="item in data.peopleMutualLove">
+          {{item.username}} - {{item.full_name}}
+        </li>
+      </ul>
+    </div>
+    <div class="column">
+      <h1>People who like you, but you dont like them</h1>
+      <ul>
+        <li v-for="item in data.peopleWhoLikeYouButYouDontLikeThem">
+          {{item.username}} - {{item.full_name}}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
