@@ -24,6 +24,7 @@ export default {
     splitPeopleTo3Groups: function () {
       var self = this
       var accessToken = Vue.ls.get('accessToken')
+      // TODO: two cases (accessToken present / missing => redirect Home or 404.html)
       // promises
       var selfPromise = self.$http.get(self.endpoints.selfURL + accessToken).promise
       var followsPromise = self.$http.get(self.endpoints.followsURL + accessToken).promise
