@@ -34,8 +34,18 @@ export default {
       Promise.all([selfPromise, followsPromise, followedByPromise]).then(values => {
         // self
         self.data.self = {
+          id: values[0].body.data.id,
           username: values[0].body.data.username,
-          full_name: values[0].body.data.full_name
+          full_name: values[0].body.data.full_name,
+          profile_picture: values[0].body.data.profile_picture,
+          bio: values[0].body.data.bio,
+          website: values[0].body.data.website,
+          is_business: values[0].body.data.is_business,
+          counts: {
+            media: values[0].body.data.counts.media,
+            follows: values[0].body.data.counts.follows,
+            followed_by: values[0].body.data.counts.followed_by
+          }
         }
         // follows
         var followsBody = values[1].body.data

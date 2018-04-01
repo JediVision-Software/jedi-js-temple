@@ -10,12 +10,36 @@ export default {
     RiseLoader
   },
   data () {
+    const ScopeType = {
+      BASIC: 'basic',
+      PUBLIC_CONTENT: 'public_content',
+      FOLLOWER_LIST: 'follower_list',
+      COMMENTS: 'comments',
+      RELATIONSHIPS: 'relationships',
+      LIKES: 'likes',
+      SEPARATOR: '+'
+    }
+    var clientId = '210a468d3bf14835a73d0d6d01a59cd1'
+    var redirectUri = 'http://localhost:8080'
+    var scope =
+      ScopeType.BASIC + ScopeType.SEPARATOR +
+      ScopeType.PUBLIC_CONTENT + ScopeType.SEPARATOR +
+      ScopeType.FOLLOWER_LIST + ScopeType.SEPARATOR +
+      ScopeType.COMMENTS + ScopeType.SEPARATOR +
+      ScopeType.RELATIONSHIPS + ScopeType.SEPARATOR +
+      ScopeType.LIKES
+    console.log(scope)
+    var responseType = 'token'
     return {
       endpoints: {
-        oauthURL: 'https://api.instagram.com/oauth/authorize?client_id=210a468d3bf14835a73d0d6d01a59cd1&redirect_uri=http://localhost:8080&scope=public_content+follower_list&response_type=token'
+        oauthURL: 'https://api.instagram.com/oauth/authorize' +
+          '?client_id=' + clientId +
+          '&redirect_uri=' + redirectUri +
+          '&scope=' + scope +
+          '&response_type=' + responseType
       },
       configuration: {
-        timeout: 500
+        timeout: 1000
       },
       color: '#40B885',
       size: '50px',

@@ -1,29 +1,118 @@
-<div  class="container-fluid">
-  Dashboard: {{data.self.username}} - {{data.self.full_name}}
+<div class="container-fluid" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+  <h1>Dashboard</h1>
+
   <div class="row">
-    <div class="column">
-      <h1>People you like, but they dont like you</h1>
-      <ul>
-        <li v-for="item in data.peopleYouLikeButTheyDontLikeYou">
-          {{item.username}} - {{item.full_name}}
-        </li>
-      </ul>
+    <div class="col-2">
+      <img v-bind:src="data.self.profile_picture"> <!-- class="rounded float-left img-thumbnail" -->
     </div>
-    <div class="column">
-      <h1>People with mutual love</h1>
-      <ul>
-        <li v-for="item in data.peopleMutualLove">
-          {{item.username}} - {{item.full_name}}
-        </li>
-      </ul>
+    <div class="col-2">
+      <div class="row">
+        <div class="col">
+          <h4><b>{{data.self.username}}</b></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6><b>Full Name:</b> {{data.self.full_name}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6><b>Biography:</b> {{data.self.bio}}</h6>
+        </div>
+      </div>
     </div>
-    <div class="column">
-      <h1>People who like you, but you dont like them</h1>
-      <ul>
-        <li v-for="item in data.peopleWhoLikeYouButYouDontLikeThem">
-          {{item.username}} - {{item.full_name}}
-        </li>
-      </ul>
+  </div>
+
+  </br>
+  </br>
+  </br>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <h4>People you like, but they don't like you</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Picture</th>
+          <th scope="col">User information</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <template v-for="item in data.peopleYouLikeButTheyDontLikeYou">
+            <td class="th">
+              <img v-bind:src="item.profile_picture">
+            </td>
+            <td class="td">
+              <div class="row">
+                <b>{{item.username}}</b>
+              </div>
+              <div class="row">
+                {{item.full_name}}
+              </div>
+            </td>
+          </template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-4">
+      <h4>People with mutual love</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Picture</th>
+          <th scope="col">User information</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <template v-for="item in data.peopleMutualLove">
+            <td class="th">
+              <img v-bind:src="item.profile_picture">
+            </td>
+            <td class="td">
+              <div class="row">
+                <b>{{item.username}}</b>
+              </div>
+              <div class="row">
+                {{item.full_name}}
+              </div>
+            </td>
+          </template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-4">
+      <h4>People who like you, but you don't like them</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Picture</th>
+          <th scope="col">User information</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <template v-for="item in data.peopleWhoLikeYouButYouDontLikeThem">
+            <td class="th">
+              <img v-bind:src="item.profile_picture">
+            </td>
+            <td class="td">
+              <div class="row">
+                <b>{{item.username}}</b>
+              </div>
+              <div class="row">
+                {{item.full_name}}
+              </div>
+            </td>
+          </template>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
