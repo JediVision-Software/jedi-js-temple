@@ -18,7 +18,7 @@ Vue.use(VueLocalStorage, options)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router: router,
   components: { App },
   template: '<App/>'
 })

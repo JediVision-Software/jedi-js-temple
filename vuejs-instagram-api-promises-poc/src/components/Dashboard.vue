@@ -2,6 +2,7 @@
 <style scoped src="../css/dashboard.css"></style>
 <script>
 import Vue from 'vue'
+import router from '../router'
 export default {
   name: 'dashboard',
   data () {
@@ -24,8 +25,9 @@ export default {
     splitPeopleTo3Groups: function () {
       var self = this
       var accessToken = Vue.ls.get('accessToken')
-      // TODO: two cases (accessToken present / missing => redirect Home or 404.html)
-      // promises
+      if (accessToken == null) {
+        router.push({name: 'home'})
+      }
       var selfPromise = self.$http.get(self.endpoints.selfURL + accessToken).promise
       var followsPromise = self.$http.get(self.endpoints.followsURL + accessToken).promise
       var followedByPromise = self.$http.get(self.endpoints.followedByURL + accessToken).promise
@@ -70,7 +72,7 @@ export default {
           self.data.peopleWhoLikeYouButYouDontLikeThem.push(followedByMappedById[followedByIds])
         })
       }, reason => {
-        // 404
+        router.push({name: 'unexpected'})
       })
     }
   },
