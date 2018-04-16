@@ -1,28 +1,11 @@
-.container-fluid {
-  font-size: 0.87em;
-}
-
-thead {
-  background-color: #b3d5d6;
-}
-
-.table-scroll {
-  height:545px;
-  overflow-y: auto;
-  overflow-x: auto;
-}
-
-#table-wrapper table {
-  width:100%;
-}
-
-.textField {
-  font-size: 20px;
-  font-weight: lighter;
-}
-
-#spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+#loading-gif {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  overflow: auto;
 }
