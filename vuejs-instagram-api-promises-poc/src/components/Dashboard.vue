@@ -3,22 +3,25 @@
 <script>
 import Vue from 'vue'
 import router from '../router'
+import InstagramService from './InstagramService'
 export default {
   name: 'dashboard',
+  components: {
+    InstagramService
+  },
   data () {
     return {
-      endpoints: {
-        selfURL: 'https://api.instagram.com/v1/users/self?access_token=',
-        followsURL: 'https://api.instagram.com/v1/users/self/follows?access_token=',
-        followedByURL: 'https://api.instagram.com/v1/users/self/followed-by?access_token='
-      },
       data: {
         self: {},
         // 3 groups (euler circles: left, intersaction, right)
         peopleYouLikeButTheyDontLikeYou: [],
         peopleMutualLove: [],
         peopleWhoLikeYouButYouDontLikeThem: []
-      }
+      },
+      followsIds: [],
+      followedByIds: [],
+      followsMappedById: {},
+      followedByMappedById: {}
     }
   },
   methods: {
@@ -28,61 +31,75 @@ export default {
       if (accessToken == null) {
         router.push({name: 'home'})
       }
-      var selfPromise = self.$http.get(self.endpoints.selfURL + accessToken).promise
-      var followsPromise = self.$http.get(self.endpoints.followsURL + accessToken).promise
-      var followedByPromise = self.$http.get(self.endpoints.followedByURL + accessToken).promise
-      Promise.all([selfPromise, followsPromise, followedByPromise]).then(values => {
+
+      InstagramService.methods.getUserInfo().then(promise => {
         // self
         self.data.self = {
-          id: values[0].body.data.id,
-          username: values[0].body.data.username,
-          full_name: values[0].body.data.full_name,
-          profile_picture: values[0].body.data.profile_picture,
-          bio: values[0].body.data.bio,
-          website: values[0].body.data.website,
-          is_business: values[0].body.data.is_business,
+          id: promise.body.data.id,
+          username: promise.body.data.username,
+          full_name: promise.body.data.full_name,
+          profile_picture: promise.body.data.profile_picture,
+          bio: promise.body.data.bio,
+          website: promise.body.data.website,
+          is_business: promise.body.data.is_business,
           counts: {
-            media: values[0].body.data.counts.media,
-            follows: values[0].body.data.counts.follows,
-            followed_by: values[0].body.data.counts.followed_by
+            media: promise.body.data.counts.media,
+            follows: promise.body.data.counts.follows,
+            followed_by: promise.body.data.counts.followed_by
           }
         }
-        // follows
-        var followsBody = values[1].body.data
-        var followsIds = []
-        var followsMappedById = {}
-        followsBody.forEach(function (item) {
-          var followsId = item.id
-          followsIds.push(followsId)
-          followsMappedById[followsId] = item
-        })
-        // followedBy
-        var followedByBody = values[2].body.data
-        var followedByIds = []
-        var followedByMappedById = {}
-        followedByBody.forEach(function (item) {
-          var followsId = item.id
-          followedByIds.push(followsId)
-          followedByMappedById[followsId] = item
-        })
-        // 3 groups (euler circles: left, intersaction, right)
-        followsIds.forEach(function (followsId) {
-          if (followedByIds.includes(followsId)) {
-            // case: intersaction
-            self.data.peopleMutualLove.push(followsMappedById[followsId])
-            // delete matched userId
-            followedByIds.splice(followedByIds.indexOf(followsId), 1)
-          } else {
-            // case: left
-            self.data.peopleYouLikeButTheyDontLikeYou.push(followsMappedById[followsId])
-          }
-        })
-        followedByIds.forEach(function (followedById) {
-          // case: right
-          self.data.peopleWhoLikeYouButYouDontLikeThem.push(followedByMappedById[followedByIds])
-        })
       }, reason => {
         router.push({name: 'unexpected'})
+      })
+
+      InstagramService.methods.getUserFollows().then(promise => {
+        // follows
+        var followsBody = promise.body.data
+        self.followsIds = []
+        self.followsMappedById = {}
+        followsBody.forEach(function (item) {
+          var followsId = item.id
+          self.followsIds.push(followsId)
+          self.followsMappedById[followsId] = item
+        })
+        self.updateFollowsAndFollowedBy(self)
+      }, reason => {
+        router.push({name: 'unexpected'})
+      })
+
+      InstagramService.methods.getUserFollowsBy().then(promise => {
+        // followedBy
+        var followedByBody = promise.body.data
+        self.followedByIds = []
+        self.followedByMappedById = {}
+        followedByBody.forEach(function (item) {
+          var followsId = item.id
+          self.followedByIds.push(followsId)
+          self.followedByMappedById[followsId] = item
+        })
+        self.updateFollowsAndFollowedBy(self)
+      }, reason => {
+        router.push({name: 'unexpected'})
+      })
+    },
+    // 3 groups (euler circles: left, intersaction, right)
+    updateFollowsAndFollowedBy: function (self) {
+      self.data.peopleMutualLove = []
+      self.data.peopleYouLikeButTheyDontLikeYou = []
+      self.data.peopleWhoLikeYouButYouDontLikeThem = []
+      // case: intersaction
+      self.followsIds.forEach(function (followsId) {
+        if (self.followedByIds.includes(followsId)) {
+          self.data.peopleMutualLove.push(self.followsMappedById[followsId])
+        }
+      })
+      // case: left
+      self.followsIds.forEach(function (followsId) {
+        self.data.peopleYouLikeButTheyDontLikeYou.push(self.followsMappedById[followsId])
+      })
+      // case: right
+      self.followedByIds.forEach(function (followedById) {
+        self.data.peopleWhoLikeYouButYouDontLikeThem.push(self.followedByMappedById[followedById])
       })
     }
   },

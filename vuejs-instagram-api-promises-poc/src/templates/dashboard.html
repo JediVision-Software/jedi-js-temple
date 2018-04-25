@@ -6,20 +6,47 @@
     <div class="col-2">
       <img v-bind:src="data.self.profile_picture"> <!-- class="rounded float-left img-thumbnail" -->
     </div>
-    <div class="col-2">
+    <div class="col-4">
       <div class="row">
         <div class="col">
-          <h4><b>{{data.self.username}}</b></h4>
+          <h4 class="float-left"><b>{{data.self.username}}</b></h4>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6><b>Full Name:</b> {{data.self.full_name}}</h6>
+          <h6 class="float-left"><b>Full Name:</b> {{data.self.full_name}}</h6>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6><b>Biography:</b> {{data.self.bio}}</h6>
+          <h6 class="float-left"><b>Biography:</b> {{data.self.bio}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="float-left"><b>Website:</b> {{data.self.website}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6><b>Media</b></h6>
+        </div>
+        <div class="col">
+          <h6><b>Follows</b></h6>
+        </div>
+        <div class="col">
+          <h6><b>Followed&nbsp;by</b></h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6>{{data.self.counts.media}}</h6>
+        </div>
+        <div class="col">
+          <h6>{{data.self.counts.follows}}</h6>
+        </div>
+        <div class="col">
+          <h6>{{data.self.counts.followed_by}}</h6>
         </div>
       </div>
     </div>
@@ -31,7 +58,7 @@
 
   <div class="row">
     <div class="col-lg-4">
-      <h4>People you like, but they don't like you</h4>
+      <h4>People you like, but they don't like you <b>({{data.peopleYouLikeButTheyDontLikeYou.length}})</b></h4>
       <table class="table">
         <thead>
         <tr>
@@ -40,8 +67,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <template v-for="item in data.peopleYouLikeButTheyDontLikeYou">
+        <template v-for="item in data.peopleYouLikeButTheyDontLikeYou">
+          <tr>
             <td class="th">
               <img v-bind:src="item.profile_picture">
             </td>
@@ -53,13 +80,13 @@
                 {{item.full_name}}
               </div>
             </td>
-          </template>
-        </tr>
+          </tr>
+        </template>
         </tbody>
       </table>
     </div>
     <div class="col-lg-4">
-      <h4>People with mutual love</h4>
+      <h4>People with mutual love <b>({{data.peopleMutualLove.length}})</b></h4>
       <table class="table">
         <thead>
         <tr>
@@ -68,8 +95,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <template v-for="item in data.peopleMutualLove">
+        <template v-for="item in data.peopleMutualLove">
+          <tr>
             <td class="th">
               <img v-bind:src="item.profile_picture">
             </td>
@@ -81,13 +108,13 @@
                 {{item.full_name}}
               </div>
             </td>
-          </template>
-        </tr>
+          </tr>
+        </template>
         </tbody>
       </table>
     </div>
     <div class="col-lg-4">
-      <h4>People who like you, but you don't like them</h4>
+      <h4>People who like you, but you don't like them <b>({{data.peopleWhoLikeYouButYouDontLikeThem.length}})</b></h4>
       <table class="table">
         <thead>
         <tr>
@@ -96,8 +123,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <template v-for="item in data.peopleWhoLikeYouButYouDontLikeThem">
+        <template v-for="item in data.peopleWhoLikeYouButYouDontLikeThem">
+          <tr>
             <td class="th">
               <img v-bind:src="item.profile_picture">
             </td>
@@ -109,8 +136,8 @@
                 {{item.full_name}}
               </div>
             </td>
-          </template>
-        </tr>
+          </tr>
+        </template>
         </tbody>
       </table>
     </div>
