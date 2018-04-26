@@ -12,7 +12,20 @@ export default {
   data () {
     return {
       data: {
-        self: {},
+        self: {
+          id: '',
+          username: '',
+          full_name: '',
+          profile_picture: '',
+          bio: '',
+          website: '',
+          is_business: '',
+          counts: {
+            media: '',
+            follows: '',
+            followed_by: ''
+          }
+        },
         // 3 groups (euler circles: left, intersaction, right)
         peopleYouLikeButTheyDontLikeYou: [],
         peopleMutualLove: [],

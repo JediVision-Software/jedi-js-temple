@@ -2,6 +2,26 @@
 export default {
   name: 'instagram-repository',
   methods: {
+    getUserSelf: function () {
+      return {
+        body: {
+          data: {
+            id: 100,
+            username: 'ostap_petrushka',
+            full_name: 'Ostap Petrushka',
+            profile_picture: 'http://bookonedollar.ru/wp-content/uploads/2017/07/ostap-bender1-150x150.png',
+            bio: 'Може, вам дати ще ключ від квартири, де гроші лежать?',
+            website: 'http://localhost:8080/',
+            is_business: false,
+            counts: {
+              media: 58,
+              follows: 200,
+              followed_by: 300
+            }
+          }
+        }
+      }
+    },
     getUserFollowsData: function () {
       return {
         body: {

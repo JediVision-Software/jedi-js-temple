@@ -7,53 +7,59 @@ export default {
   components: {
     InstagramRepository
   },
-  data () {
-    return {
-      endpoints: {
-        selfURL: 'https://api.instagram.com/v1/users/self?access_token=',
-        followsURL: 'https://api.instagram.com/v1/users/self/follows?access_token=',
-        followedByURL: 'https://api.instagram.com/v1/users/self/followed-by?access_token='
-      },
-      data: {
-        self: {},
-        peopleYouLikeButTheyDontLikeYou: [],
-        peopleMutualLove: [],
-        peopleWhoLikeYouButYouDontLikeThem: []
-      }
-    }
-  },
   methods: {
     getUserInfo: function () {
       var accessToken = Vue.ls.get('accessToken')
       if (accessToken == null) {
         router.push({name: 'home'})
       }
-      var selfPromise = Vue.http.get('https://api.instagram.com/v1/users/self?access_token=' + accessToken).promise
-      return Promise.resolve(selfPromise)
+      if (this.apiDeprecated('self')) {
+        return new Promise((resolve, reject) => {
+          var data = InstagramRepository.methods.getUserSelf()
+          resolve(data)
+        })
+      } else {
+        var selfPromise = Vue.http.get('https://api.instagram.com/v1/users/self?access_token=' + accessToken).promise
+        return Promise.resolve(selfPromise)
+      }
     },
     getUserFollows: function () {
       var accessToken = Vue.ls.get('accessToken')
       if (accessToken == null) {
         router.push({name: 'home'})
       }
-      // var followsPromise = Vue.http.get('https://api.instagram.com/v1/users/self/follows?access_token=' + accessToken).promise
-      // return Promise.resolve(followsPromise)
-      return new Promise((resolve, reject) => {
-        var data = InstagramRepository.methods.getUserFollowsData()
-        resolve(data)
-      })
+      if (this.apiDeprecated('follows')) {
+        return new Promise((resolve, reject) => {
+          var data = InstagramRepository.methods.getUserFollowsData()
+          resolve(data)
+        })
+      } else {
+        var followsPromise = Vue.http.get('https://api.instagram.com/v1/users/self/follows?access_token=' + accessToken).promise
+        return Promise.resolve(followsPromise)
+      }
     },
     getUserFollowsBy: function () {
       var accessToken = Vue.ls.get('accessToken')
       if (accessToken == null) {
         router.push({name: 'home'})
       }
-      // var followsPromise = Vue.http.get('https://api.instagram.com/v1/users/self/followed-by?access_token=' + accessToken).promise
-      // return Promise.resolve(followsPromise)
-      return new Promise((resolve, reject) => {
-        var data = InstagramRepository.methods.getUserFollowsByData()
-        resolve(data)
-      })
+      if (this.apiDeprecated('followsBy')) {
+        return new Promise((resolve, reject) => {
+          var data = InstagramRepository.methods.getUserFollowsByData()
+          resolve(data)
+        })
+      } else {
+        var followsPromise = Vue.http.get('https://api.instagram.com/v1/users/self/followed-by?access_token=' + accessToken).promise
+        return Promise.resolve(followsPromise)
+      }
+    },
+    apiDeprecated: function (endpoint) {
+      switch (endpoint) {
+        case 'self': return false
+        case 'follows': return true
+        case 'followedBy': return true
+        default: return true
+      }
     }
   },
   created: function () {}
