@@ -10,7 +10,7 @@ export default {
             username: 'ostap_petrushka',
             full_name: 'Ostap Petrushka',
             profile_picture: 'http://bookonedollar.ru/wp-content/uploads/2017/07/ostap-bender1-150x150.png',
-            bio: 'Може, вам дати ще ключ від квартири, де гроші лежать?',
+            bio: 'Can you give a key to the apartment where the money is?',
             website: 'http://localhost:8080/',
             is_business: false,
             counts: {
