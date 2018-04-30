@@ -9,5 +9,5 @@ Welcome to Forcelate JavaScript Temple — JavaScript Proofs of Concepts reposit
 
 * Angular2 Firebase Webpack PoC — Angular2, Firebase database, Webpack2
 * Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ticker, orderbooks, trades
+* Vue.js Instagram API Promises PoC — Vue.js Instagram APIs (followers, followings) using promises
 * to be continued...
-
