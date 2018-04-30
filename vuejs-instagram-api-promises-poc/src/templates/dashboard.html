@@ -12,42 +12,35 @@
       </div>
       <div class="row">
         <div class="col">
-          <h6 class="my-info float-left"><b>Full Name:</b> {{data.self.full_name}}</h6>
+          <h6 class="my-info float-left"><b class="my-info float-left">Full Name:&nbsp;</b>{{data.self.full_name}}</h6>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6 class="my-info float-left"><b>Biography:</b> {{data.self.bio}}</h6>
+          <h6 class="my-info float-left"><b class="my-info float-left">Biography:&nbsp;</b>{{data.self.bio}}</h6>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6 class="my-info float-left"><b>Website:</b> {{data.self.website}}</h6>
-        </div>
-      </div>
-      <br/>
-      <div class="row">
-        <div class="col">
-          <h6><b>Media</b></h6>
-        </div>
-        <div class="col">
-          <h6><b>Follows</b></h6>
-        </div>
-        <div class="col">
-          <h6><b>Followed&nbsp;by</b></h6>
+          <h6 class="my-info float-left"><b class="my-info float-left">Website:&nbsp;</b> <a href="">{{data.self.website}}</a></h6>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6>{{data.self.counts.media}}</h6>
-        </div>
-        <div class="col">
-          <h6>{{data.self.counts.follows}}</h6>
-        </div>
-        <div class="col">
-          <h6>{{data.self.counts.followed_by}}</h6>
+          <h6 class="my-info float-left"><b class="my-info float-left">Media:&nbsp;</b>{{data.self.counts.media}}</h6>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="my-info float-left"><b class="my-info float-left">Follows:&nbsp;</b>{{data.self.counts.follows}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h6 class="my-info float-left"><b class="my-info float-left">Followed&nbsp;by:&nbsp;</b>{{data.self.counts.followed_by}}</h6>
+        </div>
+      </div>
+
     </div>
   </div>
 
