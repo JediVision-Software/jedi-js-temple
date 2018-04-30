@@ -108,11 +108,15 @@ export default {
       })
       // case: left
       self.followsIds.forEach(function (followsId) {
-        self.data.peopleYouLikeButTheyDontLikeYou.push(self.followsMappedById[followsId])
+        if (!self.followedByIds.includes(followsId)) {
+          self.data.peopleYouLikeButTheyDontLikeYou.push(self.followsMappedById[followsId])
+        }
       })
       // case: right
       self.followedByIds.forEach(function (followedById) {
-        self.data.peopleWhoLikeYouButYouDontLikeThem.push(self.followedByMappedById[followedById])
+        if (!self.followsIds.includes(followedById)) {
+          self.data.peopleWhoLikeYouButYouDontLikeThem.push(self.followedByMappedById[followedById])
+        }
       })
     }
   },

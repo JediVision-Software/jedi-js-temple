@@ -55,7 +55,7 @@ export default {
     },
     apiDeprecated: function (endpoint) {
       switch (endpoint) {
-        case 'self': return false
+        case 'self': return true
         case 'follows': return true
         case 'followedBy': return true
         default: return true

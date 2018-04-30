@@ -1,32 +1,31 @@
 <div class="container-fluid" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
-  <h1>Dashboard</h1>
-
   <div class="row justify-content-center">
     <div class="col-2">
-      <img v-bind:src="data.self.profile_picture"> <!-- class="rounded float-left img-thumbnail" -->
+      <img class="my-profile-picture" v-bind:src="data.self.profile_picture">
     </div>
     <div class="col-4">
       <div class="row">
         <div class="col">
-          <h4 class="float-left"><b>{{data.self.username}}</b></h4>
+          <h4 class="my-username float-left"><b>{{data.self.username}}</b></h4>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6 class="float-left"><b>Full Name:</b> {{data.self.full_name}}</h6>
+          <h6 class="my-info float-left"><b>Full Name:</b> {{data.self.full_name}}</h6>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6 class="float-left"><b>Biography:</b> {{data.self.bio}}</h6>
+          <h6 class="my-info float-left"><b>Biography:</b> {{data.self.bio}}</h6>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h6 class="float-left"><b>Website:</b> {{data.self.website}}</h6>
+          <h6 class="my-info float-left"><b>Website:</b> {{data.self.website}}</h6>
         </div>
       </div>
+      <br/>
       <div class="row">
         <div class="col">
           <h6><b>Media</b></h6>
@@ -58,7 +57,7 @@
 
   <div class="row">
     <div class="col-lg-4">
-      <h4>People you like, but they don't like you <b>({{data.peopleYouLikeButTheyDontLikeYou.length}})</b></h4>
+      <h4>People whom you solely follow ({{data.peopleYouLikeButTheyDontLikeYou.length}})</h4>
       <table class="table">
         <thead>
         <tr>
@@ -70,13 +69,13 @@
         <template v-for="item in data.peopleYouLikeButTheyDontLikeYou">
           <tr>
             <td class="th">
-              <img v-bind:src="item.profile_picture">
+              <img class="profile-picture" v-bind:src="item.profile_picture">
             </td>
             <td class="td">
-              <div class="row">
+              <div class="row people-info">
                 <b>{{item.username}}</b>
               </div>
-              <div class="row">
+              <div class="row people-info">
                 {{item.full_name}}
               </div>
             </td>
@@ -86,7 +85,7 @@
       </table>
     </div>
     <div class="col-lg-4">
-      <h4>People with mutual love <b>({{data.peopleMutualLove.length}})</b></h4>
+      <h4>Mutual followers ({{data.peopleMutualLove.length}})</h4>
       <table class="table">
         <thead>
         <tr>
@@ -98,13 +97,13 @@
         <template v-for="item in data.peopleMutualLove">
           <tr>
             <td class="th">
-              <img v-bind:src="item.profile_picture">
+              <img class="profile-picture" v-bind:src="item.profile_picture">
             </td>
             <td class="td">
-              <div class="row">
+              <div class="row people-info">
                 <b>{{item.username}}</b>
               </div>
-              <div class="row">
+              <div class="row people-info">
                 {{item.full_name}}
               </div>
             </td>
@@ -114,7 +113,7 @@
       </table>
     </div>
     <div class="col-lg-4">
-      <h4>People who like you, but you don't like them <b>({{data.peopleWhoLikeYouButYouDontLikeThem.length}})</b></h4>
+      <h4>People who solely follow you ({{data.peopleWhoLikeYouButYouDontLikeThem.length}})</h4>
       <table class="table">
         <thead>
         <tr>
@@ -126,13 +125,13 @@
         <template v-for="item in data.peopleWhoLikeYouButYouDontLikeThem">
           <tr>
             <td class="th">
-              <img v-bind:src="item.profile_picture">
+              <img class="profile-picture" v-bind:src="item.profile_picture">
             </td>
             <td class="td">
-              <div class="row">
+              <div class="row people-info">
                 <b>{{item.username}}</b>
               </div>
-              <div class="row">
+              <div class="row people-info">
                 {{item.full_name}}
               </div>
             </td>
