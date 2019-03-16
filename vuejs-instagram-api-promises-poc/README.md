@@ -9,7 +9,7 @@ Vue.js - Instagram APIs (followers, followings) using promises
 
 ### Technology stack:
 * Vue.js
-* Poloniex API
+* Instagram API
 * Promises API
 
 ## Build Setup
