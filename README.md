@@ -8,7 +8,7 @@ Welcome to Forcelate JavaScript Temple — JavaScript Proofs of Concepts reposit
 # Proofs of Concepts:
 
 * Angular2 Firebase Webpack PoC — Angular2, Firebase database, Webpack2
-* Javascript-based Selenium Automation: Mocha, WebDriver, Chrome
+* Javascript-based Selenium Automation — Mocha, WebDriver, Chrome
 * Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ticker, orderbooks, trades
 * Vue.js Instagram API Promises PoC — Vue.js Instagram APIs (followers, followings) using promises
 * to be continued...
