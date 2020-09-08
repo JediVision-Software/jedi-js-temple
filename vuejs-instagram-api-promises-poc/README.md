@@ -4,7 +4,7 @@ Vue.js - Instagram APIs (followers, followings) using promises
 
 ### Demo:
 <p align="center">
-	<img src="https://github.com/forcelate/forcelate-temple-javascript/blob/master/vuejs-instagram-api-promises-poc/img/vuejs-instagram-api-promises-poc-demo.gif?raw=true" alt=""/>
+	<img src="https://github.com/tech1-io/tech1-temple-javascript/blob/master/vuejs-instagram-api-promises-poc/img/vuejs-instagram-api-promises-poc-demo.gif?raw=true" alt=""/>
 </p>
 
 ### Technology stack:

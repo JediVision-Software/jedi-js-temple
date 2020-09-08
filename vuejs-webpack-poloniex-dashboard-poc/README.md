@@ -4,7 +4,7 @@ Vue.js Webpack Poloniex Dashboard PoC — Webpack, Vue.js Poloniex Dashboard: ti
 
 ### Demo:
 <p align="center">
-	<img src="https://github.com/forcelate/forcelate-temple-javascript/blob/master/vuejs-webpack-poloniex-dashboard-poc/img/vuejs-webpack-poloniex-dashboard-poc-demo.gif?raw=true" alt=""/>
+	<img src="https://github.com/tech1-io/tech1-temple-javascript/blob/master/vuejs-webpack-poloniex-dashboard-poc/img/vuejs-webpack-poloniex-dashboard-poc-demo.gif?raw=true" alt=""/>
 </p>
 
 ### Technology stack:

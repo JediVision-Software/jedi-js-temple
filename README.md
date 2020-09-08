@@ -1,8 +1,9 @@
-# forcelate-temple-javascript
-Welcome to Forcelate JavaScript Temple — JavaScript Proofs of Concepts repository. May the force be with you.
+# tech1-temple-javascript
+Welcome to Proofs of Concepts repository about Javascript Ecosystem    
+May the force be with you  
 
 <p align="center">
-	<img src="https://github.com/forcelate/forcelate-temple-javascript/blob/master/img/jedi-js-temple.jpg?raw=true" alt=""/>
+	<img src="https://github.com/tech1-io/tech1-temple-javascript/blob/master/img/temple-js.jpg?raw=true" alt=""/>
 </p>
 
 # Proofs of Concepts:
